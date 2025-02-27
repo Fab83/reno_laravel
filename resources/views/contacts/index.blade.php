@@ -1,7 +1,8 @@
 <x-layout>
     <div class="container mx-auto mt-8">
         <a href="{{ route('contacts.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Contact</a>
-    </div></div>
+    </div>
+    <div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">Contacts</h1>
         <table class="min-w-full bg-white">
             <thead>

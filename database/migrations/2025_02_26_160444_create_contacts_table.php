@@ -24,6 +24,14 @@ return new class extends Migration
             $table->boolean('tierce_personne');
             $table->string('tierce_personne_nom')->nullable();
             $table->string('tierce_personne_prenom')->nullable();
+            $table->string('rfr')->nullable();
+            $table->string('annee_rfr')->nullable();
+            $table->integer('nb_adultes')->nullable();
+            $table->integer('nb_enfants')->nullable();
+            $table->string('locataire_annee_entree')->nullable();
+            $table->string('locataire_loyer')->nullable();
+            $table->longText('projet');
+            $table->longText('financement')->nullable();
             $table->timestamps();
         });
     }
