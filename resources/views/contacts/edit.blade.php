@@ -8,11 +8,11 @@
                     @method('PUT')
                     <div class="mb-4">
                         <label for="nom" class="block text-gray-700">Nom</label>
-                        <input type="text" name="nom" id="nom" placeholder="Nom" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->nom }}" required>
+                        <input type="text" name="nom" id="nom" placeholder="Nom" class="h-9 mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->nom }}" required>
                     </div>
                     <div class="mb-4">
                         <label for="prenom" class="block text-gray-700">Prénom</label>
-                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->prenom }}" required>
+                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="h-9 mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->prenom }}" required>
                     </div>
                     <div class="mb-4">
                         <label for="statut" class="block text-gray-700">Statut</label>
