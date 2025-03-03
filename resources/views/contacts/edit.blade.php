@@ -6,26 +6,40 @@
                 <form action="{{ route('contacts.update', $contact->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="mb-4">
-                        <label for="nom" class="block text-gray-700">Nom</label>
-                        <input type="text" name="nom" id="nom" placeholder="Nom" class="h-9 mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->nom }}" required>
+                    <div class="mb-4 flex space-x-4">
+                        <div class="w-1/3">
+                            <label for="nom" class="block text-gray-700">Nom</label>
+                            <input type="text" name="nom" id="nom" placeholder="Nom" class="h-9 mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->nom }}" required>
+                        </div>
+                        <div class="w-1/3">
+                            <label for="prenom" class="block text-gray-700">Prénom</label>
+                            <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="h-9 mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->prenom }}" required>
+                        </div>
+                        <div class="w-1/3">
+                            <label for="type" class="block text-gray-700">Type</label>
+                            <select name="type" id="type" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" required>
+                                <option value="Propriétaire" {{ $contact->type == 'Propriétaire' ? 'selected' : '' }}>Propriétaire</option>
+                                <option value="Locataire" {{ $contact->type == 'Locataire' ? 'selected' : '' }}>Locataire</option>
+                                <option value="Bailleur" {{ $contact->type == 'Bailleur' ? 'selected' : '' }}>Bailleur</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label for="prenom" class="block text-gray-700">Prénom</label>
-                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="h-9 mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->prenom }}" required>
+
+                    <div class="mb-4 flex space-x-4">
+                        <div class="w-2/3">
+                            <label for="adresse_proprietaire" class="block text-gray-700">Adresse Propriétaire</label>
+                            <input type="text" name="adresse_proprietaire" id="adresse_proprietaire" placeholder="Adresse Propriétaire" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->adresse_proprietaire }}">
+                        </div>
+                        <div class="w-1/3">
+                            <label for="statut" class="block text-gray-700">Statut</label>
+                            <select name="statut" id="statut" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" required>
+                                <option value="Propriétaire Occupant" {{ $contact->statut == 'Propriétaire Occupant' ? 'selected' : '' }}>Propriétaire Occupant</option>
+                                <option value="Propriétaire Bailleur" {{ $contact->statut == 'Propriétaire Bailleur' ? 'selected' : '' }}>Propriétaire Bailleur</option>
+                                <option value="Locataire" {{ $contact->statut == 'Locataire' ? 'selected' : '' }}>Locataire</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label for="statut" class="block text-gray-700">Statut</label>
-                        <select name="statut" id="statut" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" required>
-                            <option value="Propriétaire Occupant" {{ $contact->statut == 'Propriétaire Occupant' ? 'selected' : '' }}>Propriétaire Occupant</option>
-                            <option value="Propriétaire Bailleur" {{ $contact->statut == 'Propriétaire Bailleur' ? 'selected' : '' }}>Propriétaire Bailleur</option>
-                            <option value="Locataire" {{ $contact->statut == 'Locataire' ? 'selected' : '' }}>Locataire</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="adresse_proprietaire" class="block text-gray-700">Adresse Propriétaire</label>
-                        <input type="text" name="adresse_proprietaire" id="adresse_proprietaire" placeholder="Adresse Propriétaire" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2" value="{{ $contact->adresse_proprietaire }}">
-                    </div>
+                    
                     <div class="mb-4">
                         <label for="commune_proprietaire" class="block text-gray-700">Commune Propriétaire</label>
                         <select name="commune_proprietaire" id="commune_proprietaire" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm border-2">

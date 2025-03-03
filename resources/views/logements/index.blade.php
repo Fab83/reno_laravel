@@ -36,11 +36,11 @@
             <tbody>
                 @foreach ($logements as $logement)
                     <tr>
+                        <td class="py-2 px-4 border-b">{{ $logement->contact->nom }}</td>
                         <td class="py-2 px-4 border-b">{{ $logement->adresse_logement }}</td>
                         <td class="py-2 px-4 border-b">{{ $logement->commune_logement }}</td>
                         {{-- <td class="py-2 px-4 border-b">{{ $logement->ville }}</td> --}}
                         <td class="py-2 px-4 border-b">{{ $logement->logement_vacant ? 'Oui' : 'Non' }}</td>
-                        <td class="py-2 px-4 border-b">{{ $logement->contact->nom }}</td>
                         {{-- <td class="py-2 px-4 border-b">{{ $logement->aide_percue }}</td> --}}
                         <td class="py-2 px-4 border-b">{{ $logement->type }}</td>
                         <td class="py-2 px-4 border-b">{{ $logement->annee_construction }}</td>
