@@ -1,5 +1,5 @@
 ssh root@192.162.69.158
-N4Q8V8W1H2a0I9I
+V0r8i0T9v0i6B7B
 
 MAJ
 
@@ -70,7 +70,8 @@ cat ~/.ssh/id_rsa.pub
 
 # Vérifie si ton VPS est bien reconnu par GitHub :
 ssh -T git@github.com
-
+sudo apt update
+sudo apt install git -y
 git clone git@github.com:Fab83/reno_laravel.git /var/www/reno_laravel
 
 cd /var/www/reno_laravel
@@ -80,57 +81,12 @@ sudo mv composer.phar /usr/local/bin/composer
 composer install --no-dev --optimize-autoloader
 
 cp .env.example .env
-nano .env
-# DB_CONNECTION=sqlite
-# DB_DATABASE=/var/www/reno_laravel/database/database.sqlite
-mkdir -p database
-touch database/database.sqlite
-php artisan migrate --force
 
-sudo chown -R www-data:www-data /var/www/reno_laravel
-sudo chmod -R 775 /var/www/reno_laravel/storage /var/www/reno_laravel/bootstrap/cache
+INSTALL MYSQL
+sudo apt update
+sudo apt upgrade -y
+sudo apt install apache2 -y
+sudo apt install mysql-server -y
+sudo apt install php libapache2-mod-php php-mysql php-xml php-mbstring php-zip php-curl php-gd php-cli -y
 
-php artisan key:generate
-
-sudo apt install nginx -y
-sudo nano /etc/nginx/sites-available/reno_laravel
-
-server {
-    listen 80;
-    server_name https://vps110478.serveur-vps.net/;
-
-    root /var/www/reno_laravel/public;
-    index index.php index.html;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
-}
-
-sudo ln -s /etc/nginx/sites-available/reno_laravel /etc/nginx/sites-enabled/
-
-sudo apt install php-cli php-fpm php-mbstring php-xml php-bcmath php-tokenizer php-curl php-zip php-sqlite3 unzip curl git -y
-
-sudo systemctl restart php-fpm
-
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
-sudo apt install certbot python3-certbot-nginx -y
-
-sudo certbot --nginx -d https://vps110478.serveur-vps.net/
-sudo apt install -y nodejs
-npm install
-npm run build
+sudo apt install mariadb-server -y
