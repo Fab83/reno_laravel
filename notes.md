@@ -82,6 +82,12 @@ composer install --no-dev --optimize-autoloader
 
 cp .env.example .env
 
+sudo apt install -y nodejs npm
+npm install
+npm install tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm run build
+
 INSTALL MYSQL
 sudo apt update
 sudo apt upgrade -y
